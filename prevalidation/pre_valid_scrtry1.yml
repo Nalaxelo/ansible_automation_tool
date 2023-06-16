@@ -1,0 +1,13 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+    - name: Trail "Executing Pre-validation Scripts"
+      script: prevalid_scr.sh
+      register: output
+    - name: Trial "Fetching the Pre-Validation Report"
+      fetch:
+       src: /tmp/details.txt
+       dest: details/prevalidation-{{ inventory_hostname }}
+       flat: yes
+

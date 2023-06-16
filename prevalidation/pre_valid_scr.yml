@@ -1,0 +1,14 @@
+---
+- hosts: abcz
+  become: true
+  tasks:
+    - name: Executing of Pre-Validation Scripts
+      script: prevalid_scr.sh
+      register: output
+    - name: Fetching the Inventory Report
+      fetch:
+       src: /tmp/details.txt
+       dest: details/prevalidation-{{ inventory_hostname }}
+       flat: yes
+    - debug:
+       msg: "Pre-validation reports has been copied to details" 

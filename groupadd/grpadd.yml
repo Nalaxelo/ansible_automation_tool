@@ -1,0 +1,11 @@
+---
+- hosts: abcz
+  become: true
+  vars:
+   grpnme: abcd
+   gidnum: gidvalue
+  tasks:
+    - name: Group Add Tasks
+      group: name={{grpnme}} gid={{gidnum}} state=present
+
+
